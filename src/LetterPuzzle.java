@@ -1,36 +1,42 @@
 import java.util.Stack;
 
 public class LetterPuzzle {
-    public static void main(String[] args) {
+    String puzzle;
+    private int step = 5;
+    private int count;
+    private int rest;
 
-        String letterPuzzle = "евирПим ,тр";
-        int firstStep = 5;
-        int secondStep = firstStep * 2;
-        int thirdStep = letterPuzzle.length();
+    public LetterPuzzle(String puzzle, int step, int count, int rest) {
+        this.puzzle = puzzle;
+        this.step = step;
+        this.count = count;
+        this.rest = rest;
+    }
 
-        Stack<Character> firstPart = new Stack<>();
-        for (int i = 0; i < firstStep; i++) {
-            firstPart.add(letterPuzzle.charAt(i));
+    private int firstPoint = 0;
+
+    public void answer() {
+        for (int i = 0; i < count; i++) {
+            print(puzzle, firstPoint, step);
+            firstPoint = firstPoint + step;
         }
 
-        Stack<Character> secondPart = new Stack<>();
-        for (int i = firstStep; i < secondStep; i++) {
-            secondPart.add(letterPuzzle.charAt(i));
+        if (rest > 0) {
+            print(puzzle, count * step, rest);
+        }
+    }
+
+    private void print(String puzzle, int firstPoint, int step) {
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = firstPoint; i < firstPoint + step; i++) {
+            stack.add(puzzle.charAt(i));
         }
 
-        Stack<Character> thirdPart = new Stack<>();
-        for (int i = secondStep; i < thirdStep; i++) {
-            thirdPart.add(letterPuzzle.charAt(i));
-        }
-
-        for (int i = 0; i < firstStep; i++) {
-            System.out.print(firstPart.pop());
-        }
-        for (int i = firstStep; i < secondStep; i++) {
-            System.out.print(secondPart.pop());
-        }
-        for (int i = secondStep; i < thirdStep; i++) {
-            System.out.print(thirdPart.pop());
+        for (int j = firstPoint; j < firstPoint + step; j++) {
+            System.out.print(stack.pop());
         }
     }
 }
+
+
