@@ -7,7 +7,6 @@ public class Station {
     public static void main(String[] args) {
 
         int numberOfTremors = 10;
-
         List<Integer> earthquake = new ArrayList<>();
         int earthquakeCount = 0;
 
