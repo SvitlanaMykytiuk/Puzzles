@@ -32,6 +32,5 @@ public class LetterPuzzle {
         for (int i = secondStep; i < thirdStep; i++) {
             System.out.print(thirdPart.pop());
         }
-
     }
 }
